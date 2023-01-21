@@ -51,9 +51,9 @@
 
     //Conditional to check and announce the winner
     if (playerScore == computerScore){
-        console.log('Nobody won!, its a TIEEE')
+        console.log('Nobody won!, its a TIEEE');
     }else if(playerScore > computerScore){
-        console.log(`player won with ${playerScore} points`)
+        console.log(`player won with ${playerScore} points`);
     }else{
-        console.log(`computer won with ${computerScore} points`)
+        console.log(`computer won with ${computerScore} points`);
     } 
