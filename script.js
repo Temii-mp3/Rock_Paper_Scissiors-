@@ -9,51 +9,99 @@
             return computerChoice;
     }
     
+    let computerSelection;
     
     //playRound function with condtitional to compare player and computer options
+    
+    // //For loop that allows the game to be played for 5 rounds 
+    // for(let i = 0; i < 5; i++){
+    //   let playerSelection = prompt("Rock, Paper or Scissors?");
+    //   let computerSelection = getcomputerSelection();
+    //   playRound (playerSelection, computerSelection);
+    // }
+
+    const buttons = document.querySelectorAll('button ');
+
+    const button = buttons.forEach((button) => {
+        button.addEventListener('click', ()=> {
+           playerSelection = button.id;
+           computerSelection = getcomputerSelection();
+           playRound(playerSelection, computerSelection);
+        });
+    });
+
+    
     function playRound(playerSelection, computerSelection){
         console.log(playerSelection, computerSelection);
         if (playerSelection === computerSelection){
-            console.log('TIE');
-            console.log (playerScore, computerScore);
+            commentary.innerHTML = 'TIE';
+            text.innerHTML = "Player: " + playerScore;
+            text2.innerHTML = "Computer: " + computerScore;
+
         }else if (playerSelection == 'rock' && computerSelection =='scissors'){
-            console.log ('Player wins, +1 point!');
+            commentary.innerHTML = 'Player wins, +1 point!';
             playerScore += 1;
-            console.log (playerScore, computerScore);
+            text.innerHTML = "Player: " + playerScore;
+            text2.innerHTML = "Computer: " + computerScore;
+
         }else if (playerSelection == 'paper' && computerSelection == 'rock'){
-            console.log('Player wins, +1 point!');
+            commentary.innerHTML = 'Player wins, +1 point!';
             playerScore += 1;
-            console.log (playerScore, computerScore);
+            text.innerHTML = "Player: " + playerScore;
+            text2.innerHTML = "Computer: " + computerScore;
+
         }else if (playerSelection == 'scissors' && computerSelection == 'paper'){
-            console.log('player wins, +1 point');
+           commentary.innerHTML = 'player wins, +1 point';
             playerScore += 1;
-            console.log (playerScore, computerScore);
+            text.innerHTML = "Player: " + playerScore;
+            text2.innerHTML = "Computer: " + computerScore;
+
         }else if (playerSelection == 'scissors' && computerSelection == 'rock'){
-            console.log('computer wins, +1 point!');
+           commentary.innerHTML = 'computer wins, +1 point!';
             computerScore += 1;
-            console.log (playerScore, computerScore);
+            text.innerHTML = "Player: " + playerScore;
+            text2.innerHTML = "Computer: " + computerScore;
+
         }else if (playerSelection == 'rock' && computerSelection == 'paper'){
-            console.log('computer wins, +1 point!');
+            commentary.innerHTML = 'computer wins, +1 point!';
             computerScore += 1;
-            console.log (playerScore, computerScore);
+            text.innerHTML = "Player: " + playerScore;
+            text2.innerHTML = "Computer: " + computerScore;
+
         }else if (playerSelection == 'paper' && computerSelection == 'scissors'){
-            console.log('computer wins, +1 point');
-            computerScore += 1;console.log (playerScore, computerScore);
+            commentary.innerHTML = 'computer wins, +1 point';
+            computerScore += 1;
+            text.innerHTML = "Player: " + playerScore;
+            text2.innerHTML = "Computer: " + computerScore;
 
         }
-    }
-    //For loop that allows the game to be played for 5 rounds 
-    for(let i = 0; i < 5; i++){
-      let playerSelection = prompt("Rock, Paper or Scissors?");
-      let computerSelection = getcomputerSelection();
-      playRound (playerSelection, computerSelection);
+    if (playerScore == 5 || computerScore == 5){
+            checkScore(playerScore, computerScore);
+        }
     }
 
-    //Conditional to check and announce the winner
-    if (playerScore == computerScore){
-        console.log('Nobody won!, its a TIEEE');
-    }else if(playerScore > computerScore){
-        console.log(`player won with ${playerScore} points`);
-    }else{
-        console.log(`computer won with ${computerScore} points`);
-    } 
+   
+
+    function checkScore(playerScore, computerScore){
+        if (playerScore == computerScore){
+            WINNER.textContent = 'Nobody won!, its a TIE!';
+        }else if(playerScore > computerScore){
+            WINNER.textContent = `player won with ${playerScore} points!`;
+        }else{
+            WINNER.textContent = `computer won with ${computerScore} points!`;
+        } 
+    }
+
+    const content = document.querySelector('#content');
+
+    const text = document.querySelector('#text')
+    text.innerHTML = "Player: " + playerScore;
+
+    const text2 = document.querySelector('#text2');
+    text2.innerHTML = "Computer: " + computerScore;
+
+    const commentary = document.querySelector('#commentary');
+
+    const WINNER = document.querySelector('#winner');
+    
+    
